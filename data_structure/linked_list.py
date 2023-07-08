@@ -100,16 +100,35 @@ class LinkedList:
         """ O(1) for this solution but to iterate over all node solution would be O(n)"""
         return self.size_of_llist
 
+    def reverse(self):
+        if self.is_empty or self.size() <= 1:
+            return
+
+        previous = self.head
+        current = self.head.next
+        while current:
+            next = current.next
+            current.next = previous
+            previous = current
+            current = next
+
+        self.tail = self.head
+        self.tail.next = None
+        self.head = previous
+
 
 llist = LinkedList()
 llist.add_last(50)
 llist.add_last(60)
 llist.add_first(40)
 llist.add_first(30)
+llist.add_last(600)
+llist.add_first(22)
 llist.index(40)
 llist.index(60)
 llist.contains(30)
 llist.remove_first()
 llist.remove_last()
 llist.size()
+llist.reverse()
 print("Here")
